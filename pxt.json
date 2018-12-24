@@ -4,8 +4,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*",
-        "pxt-ikb": "workspace:ca219fd6-92e2-436e-90d6-c78826f6b30f"
+        "radio": "*"
     },
     "files": [
         "README.md",
