@@ -4,14 +4,17 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "pxt-ikb": "workspace:ca219fd6-92e2-436e-90d6-c78826f6b30f"
     },
     "files": [
         "README.md",
-        "main.ts"
+        "main.ts",
+        "iKB.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
-    "public": false
+    "public": false,
+    "installedVersion": "workspace:ca219fd6-92e2-436e-90d6-c78826f6b30f"
 }
