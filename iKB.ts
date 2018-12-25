@@ -1,283 +1,169 @@
 /**
-  * Enumeration of Motor.
+  * Enumeration of iKBADC.
   */
-enum ibitMotor {
-    //% block="\u21c8"
-    Forward,
-    //% block=" \u21ca"
-    Backward
-}
-/**
-  * Enumeration of Motor2.
-  */
-enum ibitMotor2 {
-    //% block="\u21c8"
-    Forward,
-    //% block=" \u21ca"
-    Backward
-}
-
-/**
-  * Enumeration of TurnMotor.
-  */
-enum ibitTurn {
-    //% block="Left \u27f5"
-    Left,
-    //% block="Right \u27f6"
-    Right
-}
-
-/**
-  * Enumeration of SpinMotor.
-  */
-enum ibitSpin {
-    //% block="Left \u21f5"
-    Left,
-    //% block="Right \u21c5"
-    Right
-}
-
-/**
-  * Enumeration of ReadADC.
-  */
-enum ibitReadADC {
+enum iKBADC {
     //% block="ADC 0"
-    ADC0 = 132,
+    ADC0 = 0x00,
     //% block="ADC 1"
-    ADC1 = 196,
+    ADC1 = 0x10,
     //% block="ADC 2"
-    ADC2 = 148,
+    ADC2 = 0x20,
     //% block="ADC 3"
-    ADC3 = 212,
+    ADC3 = 0x30,
     //% block="ADC 4"
-    ADC4 = 164,
+    ADC4 = 0x40,
     //% block="ADC 5"
-    ADC5 = 228,
+    ADC5 = 0x50,
     //% block="ADC 6"
-    ADC6 = 180,
+    ADC6 = 0x60,
     //% block="ADC 7"
-    ADC7 = 244
+    ADC7 = 0x70
 }
 
-/**
-  * Enumeration of Servo.
-  */
-enum ibitServo {
+enum pinx {
+    //% block="0"
+    D0,
     //% block="1"
-    SV1,
+    D1,
     //% block="2"
-    SV2
+    D2,
+    //% block="3"
+    D3,
+    //% block="4"
+    D4,
+    //% block="5"
+    D5,
+    //% block="6"
+    D6,
+    //% block="7"
+    D7
 }
-
-enum ibitMotorCH {
+enum st {
+    //% block="0"
+    OFF,
     //% block="1"
-    M1,
-    //% block="2"
-    M2
+    ON
 }
-
+enum sv {
+    //% block="10"
+    SV10,
+    //% block="11"
+    SV11,
+    //% block="12"
+    SV12,
+    //% block="13"
+    SV13,
+    //% block="14"
+    SV14,
+    //% block="15"
+    SV15
+}
 /**
  * Custom blocks
  */
-//% weight=50 color=#02AFEC icon="\uf135"
+//% weight=1 color=#31a751 icon="\uf085"
 namespace iKB {
-
-    /**Motor Block to drives motor forward and backward. The speed motor is adjustable between 0 to 100.
-      * @param speed percent of maximum speed, eg: 50
-      */
-    //% blockId="ibit_Motor" block="Motor %ibitMotor|speed %speed"
-    //% speed.min=0 speed.max=100
-    //% weight=95
-    export function Motor(Motor: ibitMotor, speed: number): void {
-        let motorspeed = pins.map(speed, 0, 100, 0, 1023)
-        pins.analogWritePin(AnalogPin.P14, 0)
-        pins.analogWritePin(AnalogPin.P16, 0)
-        pins.analogSetPeriod(AnalogPin.P14, 50)
-        pins.analogSetPeriod(AnalogPin.P16, 50)
-
-        if (Motor == ibitMotor.Forward) {
-            pins.digitalWritePin(DigitalPin.P13, 1)
-            pins.analogWritePin(AnalogPin.P14, motorspeed)
-            pins.digitalWritePin(DigitalPin.P15, 0)
-            pins.analogWritePin(AnalogPin.P16, motorspeed)
-        }
-        if (Motor == ibitMotor.Backward) {
-            pins.digitalWritePin(DigitalPin.P13, 0)
-            pins.analogWritePin(AnalogPin.P14, motorspeed)
-            pins.digitalWritePin(DigitalPin.P15, 1)
-            pins.analogWritePin(AnalogPin.P16, motorspeed)
-        }
-    }
-    /**Motor Block to drives motor forward and backward. The speed motor is adjustable between 0 to 100.
-     * @param speed percent of maximum speed, eg: 50
+    /**
+     * ฟังก์ชั่นสำหรับการติดต่อกับบอร์ด iKB
+     * @param n describe parameter here, eg: 5
+     * @param s describe parameter here, eg: "Hello"
+     * @param e describe parameter here
      */
-    //% blockId="ibit_Motor2" block="Motor2 %ibitMotor|speed1 %speed|speed2 %speed"
-    //% speed.min=0 speed.max=100
-    //% weight=100
-    export function Motor2(Motor: ibitMotor, speed1: number, speed2: number): void {
-        let motorspeed1 = pins.map(speed1, 0, 100, 0, 1023)
-        let motorspeed2 = pins.map(speed2, 0, 100, 0, 1023)
-        pins.analogWritePin(AnalogPin.P14, 0)
-        pins.analogWritePin(AnalogPin.P16, 0)
-        pins.analogSetPeriod(AnalogPin.P14, 50)
-        pins.analogSetPeriod(AnalogPin.P16, 50)
 
-        if (Motor == ibitMotor.Forward) {
-            pins.digitalWritePin(DigitalPin.P13, 1)
-            pins.analogWritePin(AnalogPin.P14, motorspeed1)
-            pins.digitalWritePin(DigitalPin.P15, 0)
-            pins.analogWritePin(AnalogPin.P16, motorspeed2)
-        }
-        if (Motor == ibitMotor.Backward) {
-            pins.digitalWritePin(DigitalPin.P13, 0)
-            pins.analogWritePin(AnalogPin.P14, motorspeed1)
-            pins.digitalWritePin(DigitalPin.P15, 1)
-            pins.analogWritePin(AnalogPin.P16, motorspeed2)
-        }
+    //% blockId="out" block="OUT pin %pinx| to %st "
+    //% weight=75
+    export function out(p: pinx, st: st): void {
+        pins.i2cWriteNumber(72, ((8 + p) * 256) + st, NumberFormat.UInt16BE, false)
     }
 
-    /**Turn Block set direction TurnLeft or TurnRight. The speed motor is adjustable between 0 to 100.
-     * @param speed percent of maximum speed, eg: 50
-     */
-    //% blockId="ibit_Turn" block="Turn %ibitTurn|speed %speed"
-    //% speed.min=0 speed.max=100
-    //% weight=90
-    export function Turn(Turn: ibitTurn, speed: number): void {
-        let motorspeed = pins.map(speed, 0, 100, 0, 1023)
-        pins.analogWritePin(AnalogPin.P14, 0)
-        pins.analogWritePin(AnalogPin.P16, 0)
-        pins.analogSetPeriod(AnalogPin.P14, 50)
-        pins.analogSetPeriod(AnalogPin.P16, 50)
-
-        if (Turn == ibitTurn.Left) {
-            pins.digitalWritePin(DigitalPin.P13, 1)
-            pins.analogWritePin(AnalogPin.P14, 0)
-            pins.digitalWritePin(DigitalPin.P15, 0)
-            pins.analogWritePin(AnalogPin.P16, motorspeed)
-        }
-        if (Turn == ibitTurn.Right) {
-            pins.digitalWritePin(DigitalPin.P13, 1)
-            pins.analogWritePin(AnalogPin.P14, motorspeed)
-            pins.digitalWritePin(DigitalPin.P15, 0)
-            pins.analogWritePin(AnalogPin.P16, 0)
-        }
+    //% blockId="sv" block="Servo CH %sv | speed %Speed "
+    //% Speed.min=-1  Speed.max=200
+    //% weight=75
+    export function servo(CH: sv, Speed: number): void {
+        pins.i2cWriteNumber(72, (0x23 * 256) + Speed, NumberFormat.UInt16BE, false)
     }
 
-    /**Spin Block set direction SpinLeft or SpinRight. The speed motor is adjustable between 0 to 100.  
-      * @param speed percent of maximum speed, eg: 50
-      */
-    //% blockId="ibit_Spin" block="Spin %ibitSpin|speed %speed"
-    //% speed.min=0 speed.max=100
-    //% weight=85
-    export function Spin(Spin: ibitSpin, speed: number): void {
-        let motorspeed = pins.map(speed, 0, 100, 0, 1023)
-        pins.analogWritePin(AnalogPin.P14, 0)
-        pins.analogWritePin(AnalogPin.P16, 0)
-        pins.analogSetPeriod(AnalogPin.P14, 50)
-        pins.analogSetPeriod(AnalogPin.P16, 50)
-
-        if (Spin == ibitSpin.Left) {
-            pins.digitalWritePin(DigitalPin.P13, 0)
-            pins.analogWritePin(AnalogPin.P14, motorspeed)
-            pins.digitalWritePin(DigitalPin.P15, 0)
-            pins.analogWritePin(AnalogPin.P16, motorspeed)
-        }
-        if (Spin == ibitSpin.Right) {
-            pins.digitalWritePin(DigitalPin.P13, 1)
-            pins.analogWritePin(AnalogPin.P14, motorspeed)
-            pins.digitalWritePin(DigitalPin.P15, 1)
-            pins.analogWritePin(AnalogPin.P16, motorspeed)
-        }
+    //% blockId="in" block="in pin %pinx "
+    //% weight=50
+    export function In(p: pinx): number {
+        pins.i2cWriteNumber(72, ((8 + p) * 256) + 2, NumberFormat.UInt16BE, false)
+        return pins.i2cReadNumber(72, NumberFormat.UInt8BE, false)
     }
-
-    /**The Motor Stop block is used to stop both motors. The speed is set to 0 automatic.       
-       * 
-       */
-    //% blockId="ibit_MotorStop" block="Motor Stop"
-    //% weight=80
-    export function MotorStop(): void {
-        pins.digitalWritePin(DigitalPin.P13, 1)
-        pins.analogWritePin(AnalogPin.P14, 0)
-        pins.digitalWritePin(DigitalPin.P15, 1)
-        pins.analogWritePin(AnalogPin.P16, 0)
+    //% blockId="in_p" block="in pullup pin %pinx "
+    //% weight=50
+    export function In_p(p: pinx): number {
+        pins.i2cWriteNumber(72, ((8 + p) * 256) + 3, NumberFormat.UInt16BE, false)
+        return pins.i2cReadNumber(72, NumberFormat.UInt8BE, false)
     }
-
 
     /**ReadADC for read analog sensor, Select ADC channel 0-7. 
-      *
-      */
-    //% blockId="ibit_readADC" block="Read %ibitReadADC"
-    //% weight=60
-    export function ReadADC(ReadADC: ibitReadADC): number {
-        let ADCValue: number;
-
-        pins.i2cWriteNumber(
-            72,
-            ReadADC,
-            NumberFormat.UInt8LE,
-            false
-        )
-        return ReadADC = pins.i2cReadNumber(72, NumberFormat.UInt16BE, false)
-    }
-
-    /**
-     * Control Servo 1 or 2 set degree between 0 - 180
-     * @param Degree servo degree 0-180, eg: 90
-     */
-    //% blockId="ibit_Servo" block="Servo %ibitServo|Degree %Degree"
-    //% Degree.min=0 Degree.max=180
+         *
+         */
+    //% blockId="iKBADC" block="Read %iKBADC"
     //% weight=75
-    export function Servo(Servo: ibitServo, Degree: number): void {
-        if (Servo == ibitServo.SV1) {
-            pins.servoWritePin(AnalogPin.P8, Degree)
-        }
-        if (Servo == ibitServo.SV2) {
-            pins.servoWritePin(AnalogPin.P12, Degree)
-        }
+    export function iKBADC(ADC_CH: iKBADC): number {
+        let ADCValue: number;
+        pins.i2cWriteNumber(72, 0x80 + ADC_CH, NumberFormat.UInt8LE, false)
+        return pins.i2cReadNumber(72, NumberFormat.UInt16BE, false)
+    }
+    //% blockId="IKB_reset" block="iKB Reset"
+    //% weight=90
+    export function iKB_Reset(): void {
+        pins.i2cWriteNumber(72, 0, NumberFormat.UInt8BE, false)
     }
 
-    /**
-    * Control Servo 1 or 2 set to freedom
-    */
-    //% blockId="ibit_ServoStop" block="Servo Stop %ibitServo"
+
+
+    //% blockId="fd" block="FD speed %Speed "
+    //% Speed.min=0  Speed.max=100
+    //% weight=75
+    export function fd(Speed: number): void {
+        pins.i2cWriteNumber(72, (0x23 * 256) + Speed, NumberFormat.UInt16BE, false)
+    }
+
+    //% blockId="bk" block="BK speed %Speed "
+    //% Speed.min=0  Speed.max=100
+    //% weight=74
+    export function bk(Speed: number): void {
+        pins.i2cWriteNumber(72, (0x23 * 256) + (256 - Speed), NumberFormat.UInt16BE, false)
+    }
+
+    //% blockId="sl" block="SL speed %Speed "
+    //% Speed.min=0  Speed.max=100
+    //% weight=73
+    export function sl(Speed: number): void {
+        pins.i2cWriteNumber(72, (0x21 * 256) + (Speed), NumberFormat.UInt16BE, false)
+        pins.i2cWriteNumber(72, (0x22 * 256) + (256 - Speed), NumberFormat.UInt16BE, false)
+    }
+
+    //% blockId="sr" block="SR speed %Speed "
+    //% Speed.min=0  Speed.max=100
+    //% weight=72
+    export function sr(Speed: number): void {
+        pins.i2cWriteNumber(72, (0x22 * 256) + (Speed), NumberFormat.UInt16BE, false)
+        pins.i2cWriteNumber(72, (0x21 * 256) + (256 - Speed), NumberFormat.UInt16BE, false)
+    }
+
+    //% blockId="tl" block="TL speed %Speed "
+    //% Speed.min=0  Speed.max=100
+    //% weight=71
+    export function tl(Speed: number): void {
+        pins.i2cWriteNumber(72, (0x22 * 256) + (Speed), NumberFormat.UInt16BE, false)
+        pins.i2cWriteNumber(72, (0x21 * 256) + (0), NumberFormat.UInt16BE, false)
+    }
+
+    //% blockId="tr" block="TR speed %Speed "
+    //% Speed.min=0  Speed.max=100
     //% weight=70
-    export function ServoStop(Servo: ibitServo): void {
-        if (Servo == ibitServo.SV1) {
-            pins.servoSetPulse(AnalogPin.P8, 0)
-        }
-        if (Servo == ibitServo.SV2) {
-            pins.servoSetPulse(AnalogPin.P12, 0)
-        }
+    export function tr(Speed: number): void {
+        pins.i2cWriteNumber(72, (0x21 * 256) + (Speed), NumberFormat.UInt16BE, false)
+        pins.i2cWriteNumber(72, (0x22 * 256) + (0), NumberFormat.UInt16BE, false)
     }
 
-    /**MotorCH set Motor Channel and Direction. The speed motor is adjustable between 0 to 100.   
-      * @param Speed percent of maximum Speed, eg: 50
-      */
-    //% blockId="ibit_MotorCH" block="setMotor %ibitMotorCH | Direction %ibitMotor | Speed %Speed"
-    //% Speed.min=0 Speed.max=100
-    //% weight=100
-    export function setMotor(Channel: ibitMotorCH, Direction: ibitMotor, Speed: number): void {
-        let motorspeed = pins.map(Speed, 0, 100, 0, 1023)
-        pins.analogWritePin(AnalogPin.P14, 0)
-        pins.analogWritePin(AnalogPin.P16, 0)
-        pins.analogSetPeriod(AnalogPin.P14, 50)
-        pins.analogSetPeriod(AnalogPin.P16, 50)
-
-        if (Channel == ibitMotorCH.M1 && Direction == ibitMotor.Forward) {
-            pins.digitalWritePin(DigitalPin.P13, 1)
-            pins.analogWritePin(AnalogPin.P14, motorspeed)
-        }
-        else if (Channel == ibitMotorCH.M2 && Direction == ibitMotor.Forward) {
-            pins.digitalWritePin(DigitalPin.P15, 0)
-            pins.analogWritePin(AnalogPin.P16, motorspeed)
-        }
-        else if (Channel == ibitMotorCH.M1 && Direction == ibitMotor.Backward) {
-            pins.digitalWritePin(DigitalPin.P13, 0)
-            pins.analogWritePin(AnalogPin.P14, motorspeed)
-        }
-        else if (Channel == ibitMotorCH.M2 && Direction == ibitMotor.Backward) {
-            pins.digitalWritePin(DigitalPin.P15, 1)
-            pins.analogWritePin(AnalogPin.P16, motorspeed)
-        }
+    //% blockId="ao" block="Motor Stop "
+    //% weight=69
+    export function ao(): void {
+        pins.i2cWriteNumber(72, (0x23 * 256) + (0), NumberFormat.UInt16BE, false)
     }
+
 }
