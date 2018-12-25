@@ -1,4 +1,4 @@
-# pxt-ikb
+# iKB-1
 
 
 
@@ -9,9 +9,9 @@
 - [ ] Add "- beta" to the GitHub project description if you are still iterating it.
 - [ ] Turn on your automated build on https://travis-ci.org
 - [ ] Use "pxt bump" to create a tagged release on GitHub
-- [ ] Get your package reviewed and approved https://makecode.microbit.org/packages/approval
+- [ ] Get your package reviewed and approved https://makecode.microbit.org/extension/approval
 
-Read more at https://makecode.microbit.org/packages/build-your-own
+Read more at https://makecode.microbit.org/extension/build-your-own
 
 ## License
 
