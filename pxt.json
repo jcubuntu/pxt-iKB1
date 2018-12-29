@@ -1,5 +1,5 @@
 {
-    "name": "pxt-ikb",
+    "name": "pxt-ikb1",
     "version": "0.0.5",
     "description": "",
     "dependencies": {
@@ -9,7 +9,7 @@
     "files": [
         "README.md",
         "main.ts",
-        "iKB.ts"
+        "iKB-1.ts"
     ],
     "testFiles": [
         "test.ts"
