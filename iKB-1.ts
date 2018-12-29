@@ -62,7 +62,7 @@ enum sv {
  * Custom blocks
  */
 //% weight=1 color=#31a751 icon="\uf085"
-namespace iKB {
+namespace iKB1 {
     /**
      * ฟังก์ชั่นสำหรับการติดต่อกับบอร์ด iKB
      * @param n describe parameter here, eg: 5
