@@ -1,6 +1,6 @@
-/**
-  * Enumeration of iKBADC.
-  */
+/** 
+* Enumeration of iKBADC.
+*/
 enum iKBADC {
     //% block="ADC 0"
     ADC0 = 0x00,
