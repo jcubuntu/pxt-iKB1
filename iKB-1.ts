@@ -56,7 +56,9 @@ enum sv {
     //% block="14"
     SV14 = 0x50,
     //% block="15"
-    SV15 = 0x60
+    SV15 = 0x60,
+    //% block="ALL"
+    ALL = 0x7F
 }
 enum iKB1MotorCH {
     //% block="1"
@@ -72,10 +74,10 @@ enum iKB1MotorCH {
     M4 = 0x28,
 
     //% block="1&2"
-    M5 = 0x23,
+    M12 = 0x23,
 
     //% block="ALL"
-    M6 = 0x2F,
+    ALL = 0x2F,
 }
 
 enum iKB1Motor {
