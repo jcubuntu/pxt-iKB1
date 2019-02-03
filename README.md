@@ -1,4 +1,8 @@
-# iKB-1
+# iKB-1 block package for iKB-1 Baord
+
+powered by micro:bit
+
+![iKB-1](https://raw.githubusercontent.com/jcubuntu/pxt-iKB1/master/icon.png)
 
 
 
