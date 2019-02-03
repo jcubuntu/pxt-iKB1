@@ -58,6 +58,8 @@ enum sv {
     //% block="15"
     SV15
 }
+
+
 /**
  * Custom blocks
  */
@@ -79,8 +81,8 @@ namespace iKB1 {
     //% blockId="sv" block="Servo CH %sv | speed %Speed "
     //% Speed.min=-1  Speed.max=200
     //% weight=75
-    export function servo(CH: sv, Speed: number): void {
-        pins.i2cWriteNumber(72, (0x23 * 256) + Speed, NumberFormat.UInt16BE, false)
+    export function servo(CH: sv, Angle: number): void {
+        pins.i2cWriteNumber(72, ((0x41+(CH*8)) * 256) + Angle, NumberFormat.UInt16BE, false)
     }
 
     //% blockId="in" block="in pin %pinx "
