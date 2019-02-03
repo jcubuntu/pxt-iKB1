@@ -71,7 +71,7 @@ Use this block for control the servo port 10-15 on iKB-1 board moving degree fro
 * Degree is an integer value between `(-1) - 200`
 
 ```blocks
-ikb-1-board.html.Servo(sv.SV10, 90)
+iKB1.Servo(sv.SV10, 90)
 ```
 
 ### ADC Block
