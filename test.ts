@@ -1,13 +1,13 @@
 
 input.onButtonPressed(Button.A, () => {
-    basic.showNumber(iKB1.iKBADC(iKBADC.ADC0))
-    basic.showNumber(iKB1.iKBADC(iKBADC.ADC1))
-    basic.showNumber(iKB1.iKBADC(iKBADC.ADC2))
-    basic.showNumber(iKB1.iKBADC(iKBADC.ADC3))
-    basic.showNumber(iKB1.iKBADC(iKBADC.ADC4))
-    basic.showNumber(iKB1.iKBADC(iKBADC.ADC5))
-    basic.showNumber(iKB1.iKBADC(iKBADC.ADC6))
-    basic.showNumber(iKB1.iKBADC(iKBADC.ADC7))
+    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC0))
+    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC1))
+    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC2))
+    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC3))
+    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC4))
+    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC5))
+    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC6))
+    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC7))
     
 })
 

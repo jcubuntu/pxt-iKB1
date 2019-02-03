@@ -1,7 +1,7 @@
 /** 
 * Enumeration of iKBADC.
 */
-enum iKBADC {
+enum iKB1ADC {
     //% block="ADC 0"
     ADC0 = 0x00,
     //% block="ADC 1"
@@ -146,11 +146,11 @@ namespace iKB1 {
     /**ReadADC for read analog sensor, Select ADC channel 0-7. 
          *
          */
-    //% blockId="iKBADC" block="iKB! Read Analog %iKBADC"
+    //% blockId="iKBADC" block="iKB1 Read Analog %iADC_CH"
     //% weight=75
-    export function iKBADC(ADC_CH: iKBADC): number {
+    export function iKBADC(ADC_CH: iKB1ADC): number {
         let ADCValue: number;
-        pins.i2cWriteNumber(72, 0x80 + ADC_CH, NumberFormat.UInt8LE, false)
+        pins.i2cWriteNumber(72, (0x80 + ADC_CH), NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(72, NumberFormat.UInt16BE, false)
     }
 
