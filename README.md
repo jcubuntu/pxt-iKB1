@@ -4,7 +4,7 @@ powered by micro:bit
 
 ![iKB-1](https://raw.githubusercontent.com/jcubuntu/pxt-iKB1/master/icon.png)
 
-The package adds support for the [i-BIT](https://inex.co.th/shop/ikb-1-board.html) conroller board from Innovative Experiment [INEX](https://inex.co.th).
+The package adds support for the [iKB-1](https://inex.co.th/shop/ikb-1-board.html) conroller board from Innovative Experiment [INEX](https://inex.co.th).
 
 # !Caution do not use iKB-1 with i-BIT baord the I2C Address is same ADC IC on i-BIT board  (0x48)
 
