@@ -46,17 +46,17 @@ enum st {
 }
 enum sv {
     //% block="10"
-    SV10,
+    SV10 = 0x41,
     //% block="11"
-    SV11,
+    SV11 = 0X42,
     //% block="12"
-    SV12,
+    SV12 = 0x44,
     //% block="13"
-    SV13,
+    SV13 = 0x48,
     //% block="14"
-    SV14,
+    SV14 = 0x50,
     //% block="15"
-    SV15
+    SV15 = 0x60
 }
 enum iKB1MotorCH {
     //% block="1"
@@ -125,7 +125,7 @@ namespace iKB1 {
     //% Angle.min=-1  Angle.max=200
     //% weight=80
     export function servo(CH: sv, Angle: number): void {
-        pins.i2cWriteNumber(72, ((0x41 + (CH * 8)) * 256) + Angle, NumberFormat.UInt16BE, false)
+        pins.i2cWriteNumber(72, (CH * 256) + Angle, NumberFormat.UInt16BE, false)
     }
 
     //% blockId="in" block="iKB1 IN pin %pinx "
