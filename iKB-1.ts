@@ -146,9 +146,9 @@ namespace iKB1 {
     /**ReadADC for read analog sensor, Select ADC channel 0-7. 
          *
          */
-    //% blockId="iKBADC" block="iKB1 Read Analog %ADC_CH"
+    //% blockId="iKBADC" block="iKB1 Read %ADC_CH"
     //% weight=75
-    export function iKBADC(ADC_CH: iKB1ADC): number {
+    export function ADC(ADC_CH: iKB1ADC): number {
         let ADCValue: number;
         pins.i2cWriteNumber(72, ADC_CH, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(72, NumberFormat.UInt16BE, false)

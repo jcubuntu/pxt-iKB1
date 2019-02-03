@@ -1,14 +1,14 @@
 
 input.onButtonPressed(Button.A, () => {
-    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC0))
-    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC1))
-    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC2))
-    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC3))
-    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC4))
-    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC5))
-    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC6))
-    basic.showNumber(iKB1.iKBADC(iKB1ADC.ADC7))
-    
+    basic.showNumber(iKB1.ADC(iKB1ADC.ADC0))
+    basic.showNumber(iKB1.ADC(iKB1ADC.ADC1))
+    basic.showNumber(iKB1.ADC(iKB1ADC.ADC2))
+    basic.showNumber(iKB1.ADC(iKB1ADC.ADC3))
+    basic.showNumber(iKB1.ADC(iKB1ADC.ADC4))
+    basic.showNumber(iKB1.ADC(iKB1ADC.ADC5))
+    basic.showNumber(iKB1.ADC(iKB1ADC.ADC6))
+    basic.showNumber(iKB1.ADC(iKB1ADC.ADC7))
+
 })
 
 input.onButtonPressed(Button.B, () => {
@@ -69,7 +69,7 @@ iKB1.Motor(iKB1Motor.Forward, 50)
 basic.pause(500)
 iKB1.Motor(iKB1Motor.Backward, 50)
 basic.pause(500)
-iKB1.Spin(iKB1Spin.Left,50)
+iKB1.Spin(iKB1Spin.Left, 50)
 basic.pause(500)
 iKB1.Spin(iKB1Spin.Right, 50)
 
