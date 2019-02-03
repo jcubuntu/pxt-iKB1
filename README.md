@@ -1,4 +1,4 @@
-# iKB-1 block package for iKB-1 Baord
+# iKB-1 block package for iKB-1 Board
 
 powered by micro:bit
 
@@ -6,7 +6,7 @@ powered by micro:bit
 
 The package adds support for the [iKB-1](https://inex.co.th/shop/ikb-1-board.html) conroller board from Innovative Experiment [INEX](https://inex.co.th).
 
-# !Caution do not use iKB-1 with i-BIT baord the I2C Address is same ADC IC on i-BIT board  (0x48)
+## !Caution do not use iKB-1 with i-BIT baord the I2C Address is same ADC IC on i-BIT board  (0x48)
 
 ### micro:bit Pin Assignment
 
