@@ -72,6 +72,12 @@ basic.pause(500)
 iKB1.Spin(iKB1Spin.Left, 50)
 basic.pause(500)
 iKB1.Spin(iKB1Spin.Right, 50)
+basic.pause(500)
+iKB1.Turn(iKB1Turn.Left, 50)
+basic.pause(500)
+iKB1.Turn(iKB1Turn.Right, 50)
+basic.pause(500)
+iKB1.AO()
 
 
 
