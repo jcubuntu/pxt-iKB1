@@ -66,20 +66,6 @@ input.onButtonPressed(Button.AB, () => {
     
 })
 
-iKB1.fd(50)
-basic.pause(1000)
-iKB1.bk(50)
-basic.pause(1000)
-iKB1.sl(50)
-basic.pause(1000)
-iKB1.sr(50)
-basic.pause(1000)
-iKB1.tl(50)
-basic.pause(1000)
-iKB1.tr(50)
-basic.pause(1000)
-iKB1.ao()
-
 
 
 
