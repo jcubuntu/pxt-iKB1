@@ -4,7 +4,9 @@ powered by micro:bit
 
 ![iKB-1](https://raw.githubusercontent.com/jcubuntu/pxt-iKB1/master/icon.png)
 
-The package adds support for the [i-BIT](https://inex.co.th/shop/ibit.html) conroller board from Innovative Experiment [INEX](https://inex.co.th).
+The package adds support for the [i-BIT](https://inex.co.th/shop/ikb-1-board.html) conroller board from Innovative Experiment [INEX](https://inex.co.th).
+
+# !Caution do not use iKB-1 with i-BIT baord the I2C Address is same ADC IC on i-BIT board  (0x48)
 
 ### micro:bit Pin Assignment
 
@@ -16,16 +18,16 @@ The following micro:bit pins are used for communication to iKB-1 to use analog a
 
 ### Motor control Block
 
-Use iBIT's motor block to drives motor forward and backward. The speed motor is adjustable between 0 to 100.
+Use iKB1's motor block to drives motor forward and backward. The speed motor is adjustable between 0 to 100.
 
 * The dirrection must be select either `Forward` or `Backward`
 * Speed is an integer value between `0 - 100`
 
 
 ```blocks
-iBIT.Motor(ibitMotor.Forward, 100)
+iKB1.Motor(iKB1Motor.Forward, 100)
 
-iBIT.Motor(ibitMotor.Backward, 100)
+iKB1.Motor(iKB1Motor.Backward, 100)
 ```
 
 ### Spin Block
@@ -36,9 +38,9 @@ Spin block is used to control both motors separately. For example, choose one mo
 * Speed is an integer value between `0 - 100`
 
 ```blocks
-iBIT.Spin(ibitSpin.Left, 100)
+iKB1.Spin(iKB1Spin.Left, 100)
 
-iBIT.Spin(ibitSpin.Right, 100)
+iKB1.Spin(iKB1Spin.Right, 100)
 ```
 
 ### Turn Block
@@ -49,9 +51,9 @@ The Turn block is used to to control the robot movment by turning. The one motor
 * Speed is an integer value between `0 - 100`
 
 ```blocks
-iBIT.Turn(ibitTurn.Left, 100)
+iKB1.Turn(iKB1Turn.Left, 100)
 
-iBIT.Turn(ibitTurn.Right, 100)
+iKB1.Turn(iKB1Turn.Right, 100)
 ```
 
 ### Motor Stop Block 
@@ -59,22 +61,22 @@ iBIT.Turn(ibitTurn.Right, 100)
 The Motor Stop block is used to stop both motors. The speed is set to `0` automatic.
 
 ```blocks
-iBIT.MotorStop()
+iKB1.AO()
 ```
 
 ### Servo Block
 
-Use this block for control the servo's moving degree from 0 to 180
+Use this block for control the servo port 10-15 on iKB-1 board moving degree from -1 to 200
 
-* Degree is an integer value between `0 - 180`
+* Degree is an integer value between `(-1) - 200`
 
 ```blocks
-iBIT.Servo(ibitServo.SV1, 90)
+ikb-1-board.html.Servo(sv.SV10, 90)
 ```
 
-### ReadAD Block
+### ADC Block
 
-This block is used to read the analog input data from the I2C-based ADC integrated circuit, ADS7828. The resolution of conversion is 12-bit. Data will be 0 to 4095. iBIT have 8-ch analog inputs. The pinout voltage range is 0 to +3.3V
+This block is used to read the analog input data from the iKB-1 board. The resolution of conversion is 10-bit. Data will be 0 to 1023. iBIT have 8-ch analog inputs. The pinout voltage range is 0 to +5V
 
 * Analog sensor port are `ADC0 - ADC7`
 * Select analog channel from `ADC0 - ADC7` for reading the analog sensor.
@@ -85,7 +87,7 @@ This block is used to read the analog input data from the I2C-based ADC integrat
 * Read the analog input 0 and display the conversion data on micro:bit. User can change the analog channel any time.
 
 ```blocks
-basic.showNumber(iBIT.ReadADC(ibitReadADC.ADC0))
+basic.showNumber(iKB1.ADC(iKB1ADC.ADC0))
 ```
 
 * Drive the motors with Forward and Backward by counting speed `0 - 100`
@@ -94,11 +96,11 @@ basic.showNumber(iBIT.ReadADC(ibitReadADC.ADC0))
 let speed = 0
 basic.forever(() => {
     for (let speed = 0; speed <= 100; speed++) {
-        iBIT.Motor(ibitMotor.Forward, speed)
+        iKB1.Motor(iKB1Motor.Forward, speed)
         basic.pause(50)
     }
     for (let speed = 0; speed <= 100; speed++) {
-        iBIT.Motor(ibitMotor.Backward, speed)
+        iKB1.Motor(iKB1Motor.Backward, speed)
         basic.pause(50)
     }
 })
@@ -108,10 +110,10 @@ basic.forever(() => {
 
 ```blocks
 input.onButtonPressed(Button.A, () => {
-    iBIT.Turn(ibitTurn.Left, 50)
+    iKB1.Turn(iKB1Turn.Left, 50)
 })
 input.onButtonPressed(Button.B, () => {
-    iBIT.Turn(ibitTurn.Right, 50)
+    iKB1.Turn(iKB1Turn.Right, 50)
 })
 ```
 
@@ -119,20 +121,20 @@ input.onButtonPressed(Button.B, () => {
 
 ```blocks
 input.onButtonPressed(Button.A, () => {
-    iBIT.Spin(ibitSpin.Left, 50)
+    iKB1.Spin(iKB1Spin.Left, 50)
 })
 input.onButtonPressed(Button.B, () => {
-    iBIT.Spin(ibitSpin.Right, 50)
+    iKB1.Spin(iKB1Spin.Right, 50)
 })
 ```
 
-* Example for Servo, drive the servo motor's movement angle at Servo output 1 and 2 from `0 - 180` and back to 0 to restart again. 
+* Example for Servo, drive the servo motor's movement angle at Servo output 10 and 11 from `0 - 180` and back to 0 to restart again. 
 
 ```blocks
 basic.forever(() => {
     for (let Degree = 0; Degree <= 180; Degree++) {
-        iBIT.Servo(ibitServo.SV1, Degree)
-        iBIT.Servo(ibitServo.SV2, Degree)
+        iKB1.Servo(sv.SV10, Degree)
+        iiKB1.Servo(sv.SV11, Degree)
         basic.pause(10)
         while (Degree == 180) {
             Degree = 0
@@ -145,10 +147,10 @@ basic.forever(() => {
 
 ```blocks
 input.onButtonPressed(Button.A, () => {
-    iBIT.Servo(ibitServo.SV1, 90)
+    iKB1.Servo(sv.SV10, 90)
 })
 input.onButtonPressed(Button.B, () => {
-    iBIT.ServoStop(ibitServo.SV1)
+    iKB1.Servo(sv.SV10,-1)
 })
 ```
 
