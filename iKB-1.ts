@@ -123,7 +123,7 @@ namespace iKB1 {
         pins.i2cWriteNumber(72, (0x23 * 256) + Speed, NumberFormat.UInt16BE, false)
     }
 
-    //% blockId="fd2" block="FD Left %SpeedLeft  Right %SpeedRight"
+    //% block="FD2" blockId="fd2" block="FD Left %SpeedLeft  Right %SpeedRight"
     //% SpeedLeft.min=0  SpeedLeft.max=100
     //% SpeedRight.min=0  SpeedRight.max=100
     //% weight=75
@@ -132,7 +132,7 @@ namespace iKB1 {
         pins.i2cWriteNumber(72, (0x21 * 256) + SpeedRight, NumberFormat.UInt16BE, false)
     }
 
-    //% blockId="bk2" block="BK Left %SpeedLeft  Right %SpeedRight"
+    //% block="BK2" blockId="bk2" block="BK Left %SpeedLeft  Right %SpeedRight"
     //% SpeedLeft.min=0  SpeedLeft.max=100
     //% SpeedRight.min=0  SpeedRight.max=100
     //% weight=75
