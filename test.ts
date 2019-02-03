@@ -63,9 +63,15 @@ input.onButtonPressed(Button.AB, () => {
     iKB1.out(pinx.D6, st.OFF)
     basic.pause(500)
     iKB1.out(pinx.D7, st.OFF)
-    
 })
 
+iKB1.Motor(iKB1Motor.Forward, 50)
+basic.pause(500)
+iKB1.Motor(iKB1Motor.Backward, 50)
+basic.pause(500)
+iKB1.Spin(iKB1Spin.Left,50)
+basic.pause(500)
+iKB1.Spin(iKB1Spin.Right, 50)
 
 
 

@@ -3,21 +3,21 @@
 */
 enum iKB1ADC {
     //% block="ADC 0"
-    ADC0 = 0x00,
+    ADC0 = 0x80,
     //% block="ADC 1"
-    ADC1 = 0x10,
+    ADC1 = 0x90,
     //% block="ADC 2"
-    ADC2 = 0x20,
+    ADC2 = 0xA0,
     //% block="ADC 3"
-    ADC3 = 0x30,
+    ADC3 = 0xB0,
     //% block="ADC 4"
-    ADC4 = 0x40,
+    ADC4 = 0xC0,
     //% block="ADC 5"
-    ADC5 = 0x50,
+    ADC5 = 0xD0,
     //% block="ADC 6"
-    ADC6 = 0x60,
+    ADC6 = 0xE0,
     //% block="ADC 7"
-    ADC7 = 0x70
+    ADC7 = 0xF0
 }
 
 enum pinx {
@@ -146,11 +146,11 @@ namespace iKB1 {
     /**ReadADC for read analog sensor, Select ADC channel 0-7. 
          *
          */
-    //% blockId="iKBADC" block="iKB1 Read Analog %iADC_CH"
+    //% blockId="iKBADC" block="iKB1 Read Analog %ADC_CH"
     //% weight=75
     export function iKBADC(ADC_CH: iKB1ADC): number {
         let ADCValue: number;
-        pins.i2cWriteNumber(72, (0x80 + ADC_CH), NumberFormat.UInt8LE, false)
+        pins.i2cWriteNumber(72, ADC_CH, NumberFormat.UInt8LE, false)
         return pins.i2cReadNumber(72, NumberFormat.UInt16BE, false)
     }
 
@@ -160,22 +160,22 @@ namespace iKB1 {
     //% blockId="iKB1_Motor" block="iKB1 Motor %iKB1Motor|speed %speed"
     //% speed.min=0 speed.max=100
     //% weight=95
-    export function Motor(Motor: iKB1Motor, speed: number): void{
-        if (Motor == iKB1Motor.Forward){
+    export function Motor(Motor: iKB1Motor, speed: number): void {
+        if (Motor == iKB1Motor.Forward) {
             pins.i2cWriteNumber(72, (0x23 * 256) + speed, NumberFormat.UInt16BE, false)
         }
-        else if (Motor == iKB1Motor.Backward){
+        else if (Motor == iKB1Motor.Backward) {
             pins.i2cWriteNumber(72, (0x23 * 256) + (256 - speed), NumberFormat.UInt16BE, false)
         }
     }
-    
+
     //% blockId="IKB_reset" block="iKB Reset"
     //% weight=50
-    export function iKB_Reset(): void {
+    export function Reset(): void {
         pins.i2cWriteNumber(72, 0, NumberFormat.UInt8BE, false)
     }
 
-   
+
 
     /**MotorCH set Motor Channel and Direction. The speed motor is adjustable between 0 to 100.   
      * @param Speed percent of maximum Speed, eg: 50
@@ -184,10 +184,10 @@ namespace iKB1 {
     //% Speed.min=0 Speed.max=100
     //% weight=100
     export function setMotor(Channel: iKB1MotorCH, Direction: iKB1Motor, Speed: number): void {
-        if (Direction == iKB1Motor.Forward){
+        if (Direction == iKB1Motor.Forward) {
             pins.i2cWriteNumber(72, (Channel * 256) + (Speed), NumberFormat.UInt16BE, false)
         }
-        else if (Direction == iKB1Motor.Backward){
+        else if (Direction == iKB1Motor.Backward) {
             pins.i2cWriteNumber(72, (Channel * 256) + (256 - Speed), NumberFormat.UInt16BE, false)
         }
 
@@ -200,12 +200,12 @@ namespace iKB1 {
     //% blockId="iKB1_Spin" block="iKB1 Spin %iKB1Spin|speed %speed"
     //% speed.min=0 speed.max=100
     //% weight=85
-    export function Spin(Spin: iKB1Spin, speed: number):void{
-        if (Spin == iKB1Spin.Left){
+    export function Spin(Spin: iKB1Spin, speed: number): void {
+        if (Spin == iKB1Spin.Left) {
             pins.i2cWriteNumber(72, (0x21 * 256) + (speed), NumberFormat.UInt16BE, false)
             pins.i2cWriteNumber(72, (0x22 * 256) + (256 - speed), NumberFormat.UInt16BE, false)
         }
-        else if (Spin == iKB1Spin.Right){
+        else if (Spin == iKB1Spin.Right) {
             pins.i2cWriteNumber(72, (0x22 * 256) + (speed), NumberFormat.UInt16BE, false)
             pins.i2cWriteNumber(72, (0x21 * 256) + (256 - speed), NumberFormat.UInt16BE, false)
         }
@@ -217,20 +217,20 @@ namespace iKB1 {
     //% blockId="iKB1_Turn" block="iKB1 Turn %iKB1Turn|speed %speed"
     //% speed.min=0 speed.max=100
     //% weight=90
-    export function Turn(Turn: iKB1Turn, speed: number): void{
-        if (Turn == iKB1Turn.Left){
+    export function Turn(Turn: iKB1Turn, speed: number): void {
+        if (Turn == iKB1Turn.Left) {
             pins.i2cWriteNumber(72, (0x22 * 256) + (speed), NumberFormat.UInt16BE, false)
             pins.i2cWriteNumber(72, (0x21 * 256) + (0), NumberFormat.UInt16BE, false)
         }
-        else if (Turn == iKB1Turn.Right){
+        else if (Turn == iKB1Turn.Right) {
             pins.i2cWriteNumber(72, (0x21 * 256) + (speed), NumberFormat.UInt16BE, false)
             pins.i2cWriteNumber(72, (0x22 * 256) + (0), NumberFormat.UInt16BE, false)
         }
     }
 
-    //% blockId="ao" block="Motor Stop"
+    //% blockId="AO" block="Motor Stop"
     //% weight=85
-    export function ao(): void {
+    export function AO(): void {
         pins.i2cWriteNumber(72, (0x23 * 256) + (0), NumberFormat.UInt16BE, false)
     }
 
