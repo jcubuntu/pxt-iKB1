@@ -78,8 +78,8 @@ namespace iKB1 {
         pins.i2cWriteNumber(72, ((8 + p) * 256) + st, NumberFormat.UInt16BE, false)
     }
 
-    //% blockId="sv" block="Servo CH %sv | speed %Speed "
-    //% Speed.min=-1  Speed.max=200
+    //% blockId="sv" block="Servo CH %sv | angle %angle "
+    //% angle.min=-1  angle.max=200
     //% weight=75
     export function servo(CH: sv, Angle: number): void {
         pins.i2cWriteNumber(72, ((0x41+(CH*8)) * 256) + Angle, NumberFormat.UInt16BE, false)
