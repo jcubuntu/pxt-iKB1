@@ -115,26 +115,26 @@ namespace iKB1 {
      * @param e describe parameter here
      */
 
-    //% blockId="out" block="OUT pin %pinx| to %st "
+    //% blockId="out" block="iKB1 OUT pin %pinx| to %st "
     //% weight=75
     export function out(p: pinx, st: st): void {
         pins.i2cWriteNumber(72, ((8 + p) * 256) + st, NumberFormat.UInt16BE, false)
     }
 
-    //% blockId="sv" block="Servo CH %sv | angle %Angle "
+    //% blockId="sv" block="iKB1 Servo CH %sv | angle %Angle "
     //% Angle.min=-1  Angle.max=200
-    //% weight=75
+    //% weight=80
     export function servo(CH: sv, Angle: number): void {
         pins.i2cWriteNumber(72, ((0x41 + (CH * 8)) * 256) + Angle, NumberFormat.UInt16BE, false)
     }
 
-    //% blockId="in" block="in pin %pinx "
+    //% blockId="in" block="iKB1 IN pin %pinx "
     //% weight=50
     export function In(p: pinx): number {
         pins.i2cWriteNumber(72, ((8 + p) * 256) + 2, NumberFormat.UInt16BE, false)
         return pins.i2cReadNumber(72, NumberFormat.UInt8BE, false)
     }
-    //% blockId="in_p" block="in pullup pin %pinx "
+    //% blockId="in_p" block="IKB1 IN PullUp pin %pinx "
     //% weight=50
     export function In_p(p: pinx): number {
         pins.i2cWriteNumber(72, ((8 + p) * 256) + 3, NumberFormat.UInt16BE, false)
@@ -144,7 +144,7 @@ namespace iKB1 {
     /**ReadADC for read analog sensor, Select ADC channel 0-7. 
          *
          */
-    //% blockId="iKBADC" block="Read %iKBADC"
+    //% blockId="iKBADC" block="iKB! Read Analog %iKBADC"
     //% weight=75
     export function iKBADC(ADC_CH: iKBADC): number {
         let ADCValue: number;
@@ -168,7 +168,7 @@ namespace iKB1 {
     }
     
     //% blockId="IKB_reset" block="iKB Reset"
-    //% weight=90
+    //% weight=50
     export function iKB_Reset(): void {
         pins.i2cWriteNumber(72, 0, NumberFormat.UInt8BE, false)
     }
@@ -227,7 +227,7 @@ namespace iKB1 {
     }
 
     //% blockId="ao" block="Motor Stop"
-    //% weight=69
+    //% weight=85
     export function ao(): void {
         pins.i2cWriteNumber(72, (0x23 * 256) + (0), NumberFormat.UInt16BE, false)
     }
