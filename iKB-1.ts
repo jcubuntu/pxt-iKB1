@@ -234,4 +234,15 @@ namespace iKB1 {
         pins.i2cWriteNumber(72, (0x23 * 256) + (0), NumberFormat.UInt16BE, false)
     }
 
+    //% blockId="Serial available" block="Serial available"
+    //% weight=70
+    export function serialAvailable():boolean {
+        let _readDat=0
+        pins.i2cWriteNumber(72,0x01, NumberFormat.UInt16BE, false)
+        _readDat = pins.i2cReadNumber(72, NumberFormat.UInt8BE, false)
+        let returnData = false
+        returnData = (_readDat > 0 ? true : false)
+        return returnData
+    }
+
 }
